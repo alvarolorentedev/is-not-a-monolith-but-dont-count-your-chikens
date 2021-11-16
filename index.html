@@ -1,6 +1,6 @@
 <!doctype html><html lang=en>
 <head>
-<meta name=generator content="Hugo 0.89.2">
+<meta name=generator content="Hugo 0.89.3">
 <meta charset=utf-8>
 <title>Is not a Monolith Anymore! But is not enought!</title>
 <meta name=description content="Presentation about practices">
@@ -14,7 +14,7 @@
 <div class=reveal>
 <div class=slides>
 <section><h1 id=is-not-a-monolith-anymore>Is not a Monolith Anymore!</h1>
-<h2 id=but-not-enought>But not enought!</h2>
+<h2 id=isnotenought>#IsNotEnought</h2>
 <p><small>Created by <a href=https://kanekotic.xom>Alvaro</a> (<a href=https://twitter.com/kanekotic>@kanekotic</a>) @<a href=https://www.climatepartner.com>ClimatePartner</a>.
 </small></p>
 </section><section>
@@ -23,27 +23,85 @@
 </section><section>
 <h1 id=the-monolith>The monolith</h1>
 <h3 id=why-we-hate-it>Why we hate it?</h3>
+<img src=/images/monolith.png width=500>
+<aside class=notes><ul>
+<li>There was a time we all have to work on the same code base</li>
+<li>You release a big thing and pray it works</li>
+<li>You go through big cicles of validating the entire thing</li>
+<li>You need big teams only to validate, it makes the release cicle bigger</li>
+</ul>
+</aside>
 </section><section>
 <h1 id=the-microservice>The microservice</h1>
-<h3 id=why-we-love-the-concept>Why we love the concept?</h3>
+<h3 id=why-we-love-it>Why we love it?</h3>
+<img src=/images/microservice.png width=500>
+<aside class=notes><ul>
+<li>we love the concept because it means work in smaller things</li>
+<li>we can break less stuff so it gives us more confidence</li>
+<li>we denpend on less people to achieve what we want</li>
+</ul>
+</aside>
 </section>
 </section><section>
+<h1 id=awesome>Awesome!</h1>
+<h3 id=presentation-finish>Presentation finish!!!</h3>
+</section><section>
+<h1 id=or-is-it-not-finish>or is it not finish&mldr;</h1>
+</section><section>
 <section data-shortcode-section>
-<h1 id=the-problem>The Problem</h1>
+<h3 id=can-there-be-problems-with-microservices-architecture>Can there be problems with microservices architecture?</h3>
+</section><section>
+<h1 id=did-you-had-any-of-this-cases>Did you had any of this cases?</h1>
+<ul>
+<li>Before we release a new version we need to sync deploys with another team.</li>
+<li>Our application was down but is not our issue.</li>
+<li>We deploy at 10 pm because is when nobody is online.</li>
+<li>&mldr;</li>
+</ul>
+</section><section>
 <h3 id=dam-you-microliths>Dam You Microliths!</h3>
+<img src=/images/microliths.jpg width=700>
+<aside class=notes><ul>
+<li>when you have syncronous calls to other service you are not decoupled from them</li>
+<li>There is even cascading possible without your knowledge</li>
+<li>your boundaries are not defined</li>
+</ul>
+</aside>
 </section><section>
-<h1 id=what-is-the-issue>What Is The issue</h1>
+<h1 id=efectively-you-have-a-monolith-broken-into-pieces>efectively you have a monolith broken into pieces</h1>
+</section>
 </section><section>
-<h1 id=the-side-effects>The Side Effects</h1>
+<h1 id=we-are-doomed>We are doomed!!!</h1>
+<img src=/images/timetopanic.jpg width=700>
+</section><section>
+<h1 id=any-alternative>Any Alternative?!</h1>
+</section><section>
+<section data-shortcode-section>
+<h1 id=the-naive-solution>The Naive Solution</h1>
+<h3 id=circuit-braked-microliths>circuit braked Microliths</h3>
+<img src=/images/greenlantern.png width=500>
 </section>
 </section><section>
 <section data-shortcode-section>
-<h1 id=the-alternative>The Alternative</h1>
-<h3 id=event-driven-architecture-to-the-rescue>Event Driven Architecture To the Rescue</h3>
+<h1 id=a-better-solution>A Better Solution</h1>
+<h3 id=reactive-microliths>Reactive Microliths</h3>
+<img src=/images/reactivehero.jpeg width=700>
+<h5 id=wait-still-microliths>wait still microliths?!</h5>
 </section><section>
-<h1 id=the-good-parts>The good Parts</h1>
+<h2 id=baby-steps>Baby steps</h2>
+<ul>
+<li>Use Pub/Sub (ex. kafka, kinesis)</li>
+<li>Send the same domain object in a message</li>
+</ul>
+<img src=/images/reactivemicroliths.jpg width=700>
+<aside class=notes><ul>
+<li></li>
+</ul>
+</aside>
+</section>
 </section><section>
-<h1 id=the-bad-parts>The Bad Parts</h1>
+<section data-shortcode-section>
+<h1 id=the-best-solution-reactive-microsystems>The Best Solution: Reactive Microsystems</h1>
 </section>
 </section><section>
 <h1 id=questions>Questions?</h1>
