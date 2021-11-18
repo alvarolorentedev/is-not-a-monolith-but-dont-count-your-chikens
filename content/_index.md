@@ -195,7 +195,7 @@ reveal_hugo:
 
 ✔️ We don't fail continuously if some other service fails
 
-✔️ We always finish our side of the process and assure the rest will be done 
+✔️ We always finish our process and promise the rest will be done 
 
 ✔️ We just need ourselves to do what we promise
 
@@ -239,7 +239,7 @@ reveal_hugo:
 
 ✔️ We don't fail continuously if some other service fails
 
-✔️ There is no data loss and the process will finish 
+✔️ We always finish our process and promise the rest will be done 
 
 ✔️ We just need ourselves to do what we promise
 
