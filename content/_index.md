@@ -1,7 +1,7 @@
 ---
-title: "Is not a Monolith Anymore! But is not enought!"
+title: "Is not a Monolith Anymore! But is not enough!"
 outputs: ["Reveal"]
-description: "Presentation about practices"
+description: "Presentation about the different ways of doing microservice"
 reveal_hugo:
     custom_theme: "reveal-hugo/themes/robot-lung.css"
     margin: 0.2
@@ -31,8 +31,8 @@ reveal_hugo:
 {{% note %}}
 - There was a time we all have to work on the same code base
 - You release a big thing and pray it works
-- You go through big cicles of validating the entire thing
-- You need big teams only to validate, it makes the release cicle bigger
+- You go through big cycles of validating the entire thing
+- You need big teams only to validate, it makes the release cycle bigger
 {{% /note %}}
 
 ---
@@ -46,7 +46,7 @@ reveal_hugo:
 {{% note %}}
 - we love the concept because it means work in smaller things
 - we can break less stuff so it gives us more confidence
-- we denpend on less people to achieve what we want
+- we depend on less people to achieve what we want
 {{% /note %}}
 
 {{% /section %}}
@@ -64,7 +64,7 @@ reveal_hugo:
 
 {{% section %}}
 
-### Can there be problems with microservices architecture?
+### Can there be problems with microservice architecture?
 
 ---
 
@@ -76,21 +76,21 @@ reveal_hugo:
 
 ---
 
-### Dam You Microliths!
+### Dam You Microlith!
 
 <img src="/images/microliths.jpg" width="700"/>
 
 {{% note %}}
-- when you have syncronous calls to other service you are not decoupled from them
+- when you have synchronous calls to other service you are not decoupled from them
 - There is even cascading possible without your knowledge
 - your boundaries are not defined
 - slow services are forced to scale by faster services
-- aditional latency
+- additional latency
 {{% /note %}}
 
 ---
 
-# efectively you have a monolith broken into pieces
+# effectively you have a monolith broken into pieces
 
 {{% /section %}}
 
@@ -126,7 +126,7 @@ reveal_hugo:
 
 ---
  
-# SYNC != Faster
+# synchronous != Faster
 
 {{% note %}}
 - A single source of data means that whenever you need that data you have a direct dependency
@@ -145,7 +145,7 @@ reveal_hugo:
 {{% section %}}
 
 # The Naive Solution
-### circuit braked Microliths
+### circuit braked Microlith
 
 <img src="/images/greenlantern.png" width="500"/>
 
@@ -155,13 +155,13 @@ reveal_hugo:
 
 ---
 
-✔️ We dont fail continuesly if some other service fails
+✔️ We don't fail continuously if some other service fails
 
-❌ We can lose data and dont finish the process requested
+❌ We silently don't finish the entire process requested
 
-❌ We require all chain of dependencies that slows the service
+❌ We require all chain of dependencies to be called
 
-❌ We force other services to scale to our users needs
+❌ We force other services to scale to our needs
 
 ❌ Data is mutable so errors will be propagated and not solvable
 
@@ -178,11 +178,11 @@ reveal_hugo:
 
 ---
 
-## Reactive Microliths
+## Reactive Microlith
 
 <img src="/images/reactivemicroliths.jpg" width="700"/>
 
-##### wait still microliths?!
+##### wait still microlith?!
 
 {{% note %}}
 - Decouple using Pub/Sub (ex. kafka, kinesis)
@@ -193,9 +193,9 @@ reveal_hugo:
 
 ---
 
-✔️ We dont fail continuesly if some other service fails
+✔️ We don't fail continuously if some other service fails
 
-✔️ There is no data loss and the process will finish 
+✔️ We always finish our side of the process and assure the rest will be done 
 
 ✔️ We just need ourselves to do what we promise
 
@@ -237,7 +237,7 @@ reveal_hugo:
 
 ---
 
-✔️ We dont fail continuesly if some other service fails
+✔️ We don't fail continuously if some other service fails
 
 ✔️ There is no data loss and the process will finish 
 
@@ -245,7 +245,7 @@ reveal_hugo:
 
 ✔️ Fast services will be fast, and slow services can go slow
 
-✔️ Data is inmutable so a change in our code can solve historical errors
+✔️ Data is immutable so a change in our code can solve historical errors
 
 {{% /section %}}
 
