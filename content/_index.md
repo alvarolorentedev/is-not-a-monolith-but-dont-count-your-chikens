@@ -48,6 +48,8 @@ reveal_hugo:
 ---
 
 
+{{% section %}}
+
 <img src="/images/bye.jpeg" width="700"/>
 
 ###### Awesome! questions?!
@@ -57,6 +59,8 @@ reveal_hugo:
 <img src="/images/waitasec.jpg" width="700"/>
 
 ###### or is it not finish...
+
+{{% /section %}}
 
 ---
 
@@ -96,7 +100,9 @@ reveal_hugo:
 
 {{% section %}}
 
-# Where are we failing?
+#### what got lost in translation?
+
+<img src="/images/lostintranslation.jpg" width="400" />
 
 ---
 
@@ -129,6 +135,8 @@ reveal_hugo:
 
 ---
 
+{{% section %}}
+
 # We are doomed!!!
 
 <img src="/images/timetopanic.jpg" width="700"/>
@@ -145,6 +153,8 @@ reveal_hugo:
 <img src="/images/notyet.gif" width="700"/>
 
 ###### ok!
+
+{{% /section %}}
 
 ---
 
