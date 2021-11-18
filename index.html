@@ -2,8 +2,8 @@
 <head>
 <meta name=generator content="Hugo 0.89.4">
 <meta charset=utf-8>
-<title>Is not a Monolith Anymore! But is not enought!</title>
-<meta name=description content="Presentation about practices">
+<title>Is not a Monolith Anymore! But is not enough!</title>
+<meta name=description content="Presentation about the different ways of doing microservice">
 <meta name=apple-mobile-web-app-capable content="yes">
 <meta name=apple-mobile-web-app-status-bar-style content="black-translucent">
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
@@ -27,8 +27,8 @@
 <aside class=notes><ul>
 <li>There was a time we all have to work on the same code base</li>
 <li>You release a big thing and pray it works</li>
-<li>You go through big cicles of validating the entire thing</li>
-<li>You need big teams only to validate, it makes the release cicle bigger</li>
+<li>You go through big cycles of validating the entire thing</li>
+<li>You need big teams only to validate, it makes the release cycle bigger</li>
 </ul>
 </aside>
 </section><section>
@@ -38,7 +38,7 @@
 <aside class=notes><ul>
 <li>we love the concept because it means work in smaller things</li>
 <li>we can break less stuff so it gives us more confidence</li>
-<li>we denpend on less people to achieve what we want</li>
+<li>we depend on less people to achieve what we want</li>
 </ul>
 </aside>
 </section>
@@ -49,7 +49,7 @@
 <h1 id=or-is-it-not-finish>or is it not finish&mldr;</h1>
 </section><section>
 <section data-shortcode-section>
-<h3 id=can-there-be-problems-with-microservices-architecture>Can there be problems with microservices architecture?</h3>
+<h3 id=can-there-be-problems-with-microservice-architecture>Can there be problems with microservice architecture?</h3>
 </section><section>
 <h1 id=did-you-had-any-of-this-cases>Did you had any of this cases?</h1>
 <ul>
@@ -59,18 +59,18 @@
 <li>&mldr;</li>
 </ul>
 </section><section>
-<h3 id=dam-you-microliths>Dam You Microliths!</h3>
+<h3 id=dam-you-microlith>Dam You Microlith!</h3>
 <img src=/images/microliths.jpg width=700>
 <aside class=notes><ul>
-<li>when you have syncronous calls to other service you are not decoupled from them</li>
+<li>when you have synchronous calls to other service you are not decoupled from them</li>
 <li>There is even cascading possible without your knowledge</li>
 <li>your boundaries are not defined</li>
 <li>slow services are forced to scale by faster services</li>
-<li>aditional latency</li>
+<li>additional latency</li>
 </ul>
 </aside>
 </section><section>
-<h1 id=efectively-you-have-a-monolith-broken-into-pieces>efectively you have a monolith broken into pieces</h1>
+<h1 id=effectively-you-have-a-monolith-broken-into-pieces>effectively you have a monolith broken into pieces</h1>
 </section>
 </section><section>
 <h1 id=we-are-doomed>We are doomed!!!</h1>
@@ -92,7 +92,7 @@
 </ul>
 </aside>
 </section><section>
-<h1 id=sync--faster>SYNC != Faster</h1>
+<h1 id=synchronous--faster>synchronous != Faster</h1>
 <aside class=notes><ul>
 <li>A single source of data means that whenever you need that data you have a direct dependency</li>
 </ul>
@@ -103,15 +103,15 @@
 </section><section>
 <section data-shortcode-section>
 <h1 id=the-naive-solution>The Naive Solution</h1>
-<h3 id=circuit-braked-microliths>circuit braked Microliths</h3>
+<h3 id=circuit-braked-microlith>circuit braked Microlith</h3>
 <img src=/images/greenlantern.png width=500>
 </section><section>
 <img src=/images/circuitbreakerdesignpattern.png width=1000>
 </section><section>
-<p>✔️ We dont fail continuesly if some other service fails</p>
-<p>❌ We can lose data and dont finish the process requested</p>
-<p>❌ We require all chain of dependencies that slows the service</p>
-<p>❌ We force other services to scale to our users needs</p>
+<p>✔️ We don&rsquo;t fail continuously if some other service fails</p>
+<p>❌ We silently don&rsquo;t finish the entire process requested</p>
+<p>❌ We require all chain of dependencies to be called</p>
+<p>❌ We force other services to scale to our needs</p>
 <p>❌ Data is mutable so errors will be propagated and not solvable</p>
 </section>
 </section><section>
@@ -120,9 +120,9 @@
 <h3 id=the-outbox-pattern>The Outbox Pattern</h3>
 <img src=/images/reactivehero.jpeg width=700>
 </section><section>
-<h2 id=reactive-microliths>Reactive Microliths</h2>
+<h2 id=reactive-microlith>Reactive Microlith</h2>
 <img src=/images/reactivemicroliths.jpg width=700>
-<h5 id=wait-still-microliths>wait still microliths?!</h5>
+<h5 id=wait-still-microlith>wait still microlith?!</h5>
 <aside class=notes><ul>
 <li>Decouple using Pub/Sub (ex. kafka, kinesis)</li>
 <li>Consume the models from other services you need</li>
@@ -131,8 +131,8 @@
 </ul>
 </aside>
 </section><section>
-<p>✔️ We dont fail continuesly if some other service fails</p>
-<p>✔️ There is no data loss and the process will finish</p>
+<p>✔️ We don&rsquo;t fail continuously if some other service fails</p>
+<p>✔️ We always finish our side of the process and assure the rest will be done</p>
 <p>✔️ We just need ourselves to do what we promise</p>
 <p>✔️ Fast services will be fast, and slow services can go slow</p>
 <p>❌ Data is mutable so errors will be propagated and not solvable</p>
@@ -155,11 +155,11 @@
 <img src=/images/microsystems.jpg width=700>
 <aside class=notes></aside>
 </section><section>
-<p>✔️ We dont fail continuesly if some other service fails</p>
+<p>✔️ We don&rsquo;t fail continuously if some other service fails</p>
 <p>✔️ There is no data loss and the process will finish</p>
 <p>✔️ We just need ourselves to do what we promise</p>
 <p>✔️ Fast services will be fast, and slow services can go slow</p>
-<p>✔️ Data is inmutable so a change in our code can solve historical errors</p>
+<p>✔️ Data is immutable so a change in our code can solve historical errors</p>
 </section>
 </section><section>
 <h1 id=questions>Questions?</h1>
