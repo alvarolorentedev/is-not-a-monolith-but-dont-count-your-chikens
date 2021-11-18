@@ -71,7 +71,7 @@ reveal_hugo:
 # Did you had any of this cases?
 - Before we release a new version we need to sync deploys with another team.
 - Our application was down but is not our issue.
-- We deploy at 10 pm because is when nobody is online.
+- Our service was working and scaling fine until the team X started using us.
 - ...
 
 ---
@@ -84,6 +84,8 @@ reveal_hugo:
 - when you have syncronous calls to other service you are not decoupled from them
 - There is even cascading possible without your knowledge
 - your boundaries are not defined
+- slow services are forced to scale by faster services
+- aditional latency
 {{% /note %}}
 
 ---
@@ -100,6 +102,42 @@ reveal_hugo:
 
 ---
 
+
+{{% section %}}
+
+# Where are we failing?
+
+---
+
+# Domains != Resources
+
+{{% note %}}
+- You are thinking in Domains being resources, this comes from the CRUD mentality
+- domain driven design is about thinking on a process as a bounded context
+{{% /note %}}
+
+---
+ 
+# Independency Data != Only my data
+
+{{% note %}}
+- A single source of data means that whenever you need that data you have a direct dependency
+{{% /note %}}
+
+---
+ 
+# SYNC != Faster
+
+{{% note %}}
+- A single source of data means that whenever you need that data you have a direct dependency
+{{% /note %}}
+
+
+
+{{% /section %}}
+
+---
+
 # Any Alternative?!
 
 ---
@@ -111,6 +149,22 @@ reveal_hugo:
 
 <img src="/images/greenlantern.png" width="500"/>
 
+---
+
+<img src="/images/circuitbreakerdesignpattern.png" width="1000"/>
+
+---
+
+✔️ We dont fail continuesly if some other service fails
+
+❌ We can lose data and dont finish the process requested
+
+❌ We require all chain of dependencies that slows the service
+
+❌ We force other services to scale to our users needs
+
+❌ Data is mutable so errors will be propagated and not solvable
+
 {{% /section %}}
 
 ---
@@ -118,24 +172,36 @@ reveal_hugo:
 {{% section %}}
 
 # A Better Solution
-### Reactive Microliths
+### The Outbox Pattern
 
 <img src="/images/reactivehero.jpeg" width="700"/>
 
-##### wait still microliths?!
-
 ---
 
-## Baby steps
-
-- Use Pub/Sub (ex. kafka, kinesis)
-- Send the same domain object in a message
+## Reactive Microliths
 
 <img src="/images/reactivemicroliths.jpg" width="700"/>
 
+##### wait still microliths?!
+
 {{% note %}}
-- 
+- Decouple using Pub/Sub (ex. kafka, kinesis)
+- Consume the models from other services you need
+- Broadcast your models to others
+- Strong consistency on the outbox, eventual consistency in the service DB (if you have one) 
 {{% /note %}}
+
+---
+
+✔️ We dont fail continuesly if some other service fails
+
+✔️ There is no data loss and the process will finish 
+
+✔️ We just need ourselves to do what we promise
+
+✔️ Fast services will be fast, and slow services can go slow
+
+❌ Data is mutable so errors will be propagated and not solvable
 
 {{% /section %}}
 
@@ -143,7 +209,43 @@ reveal_hugo:
 
 {{% section %}}
 
-# The Best Solution: Reactive Microsystems
+# An Even Better Solution
+### Event Sourcing Journal
+
+<img src="/images/ironman.png" width="700"/>
+
+---
+
+## Microsystem (almost)
+
+<img src="/images/microsystemsalmost.jpg" width="700"/>
+
+##### wait almost?!
+
+{{% note %}}
+- based on event sourcing the true is the event and not the result
+{{% /note %}}
+
+---
+
+## Microsystem
+
+<img src="/images/microsystems.jpg" width="700"/>
+
+{{% note %}}
+{{% /note %}}
+
+---
+
+✔️ We dont fail continuesly if some other service fails
+
+✔️ There is no data loss and the process will finish 
+
+✔️ We just need ourselves to do what we promise
+
+✔️ Fast services will be fast, and slow services can go slow
+
+✔️ Data is inmutable so a change in our code can solve historical errors
 
 {{% /section %}}
 
