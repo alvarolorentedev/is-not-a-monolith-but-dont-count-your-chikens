@@ -1,6 +1,6 @@
 <!doctype html><html lang=en>
 <head>
-<meta name=generator content="Hugo 0.89.3">
+<meta name=generator content="Hugo 0.89.4">
 <meta charset=utf-8>
 <title>Is not a Monolith Anymore! But is not enought!</title>
 <meta name=description content="Presentation about practices">
@@ -55,7 +55,7 @@
 <ul>
 <li>Before we release a new version we need to sync deploys with another team.</li>
 <li>Our application was down but is not our issue.</li>
-<li>We deploy at 10 pm because is when nobody is online.</li>
+<li>Our service was working and scaling fine until the team X started using us.</li>
 <li>&mldr;</li>
 </ul>
 </section><section>
@@ -65,6 +65,8 @@
 <li>when you have syncronous calls to other service you are not decoupled from them</li>
 <li>There is even cascading possible without your knowledge</li>
 <li>your boundaries are not defined</li>
+<li>slow services are forced to scale by faster services</li>
+<li>aditional latency</li>
 </ul>
 </aside>
 </section><section>
@@ -74,34 +76,90 @@
 <h1 id=we-are-doomed>We are doomed!!!</h1>
 <img src=/images/timetopanic.jpg width=700>
 </section><section>
+<section data-shortcode-section>
+<h1 id=where-are-we-failing>Where are we failing?</h1>
+</section><section>
+<h1 id=domains--resources>Domains != Resources</h1>
+<aside class=notes><ul>
+<li>You are thinking in Domains being resources, this comes from the CRUD mentality</li>
+<li>domain driven design is about thinking on a process as a bounded context</li>
+</ul>
+</aside>
+</section><section>
+<h1 id=independency-data--only-my-data>Independency Data != Only my data</h1>
+<aside class=notes><ul>
+<li>A single source of data means that whenever you need that data you have a direct dependency</li>
+</ul>
+</aside>
+</section><section>
+<h1 id=sync--faster>SYNC != Faster</h1>
+<aside class=notes><ul>
+<li>A single source of data means that whenever you need that data you have a direct dependency</li>
+</ul>
+</aside>
+</section>
+</section><section>
 <h1 id=any-alternative>Any Alternative?!</h1>
 </section><section>
 <section data-shortcode-section>
 <h1 id=the-naive-solution>The Naive Solution</h1>
 <h3 id=circuit-braked-microliths>circuit braked Microliths</h3>
 <img src=/images/greenlantern.png width=500>
+</section><section>
+<img src=/images/circuitbreakerdesignpattern.png width=1000>
+</section><section>
+<p>✔️ We dont fail continuesly if some other service fails</p>
+<p>❌ We can lose data and dont finish the process requested</p>
+<p>❌ We require all chain of dependencies that slows the service</p>
+<p>❌ We force other services to scale to our users needs</p>
+<p>❌ Data is mutable so errors will be propagated and not solvable</p>
 </section>
 </section><section>
 <section data-shortcode-section>
 <h1 id=a-better-solution>A Better Solution</h1>
-<h3 id=reactive-microliths>Reactive Microliths</h3>
+<h3 id=the-outbox-pattern>The Outbox Pattern</h3>
 <img src=/images/reactivehero.jpeg width=700>
-<h5 id=wait-still-microliths>wait still microliths?!</h5>
 </section><section>
-<h2 id=baby-steps>Baby steps</h2>
-<ul>
-<li>Use Pub/Sub (ex. kafka, kinesis)</li>
-<li>Send the same domain object in a message</li>
-</ul>
+<h2 id=reactive-microliths>Reactive Microliths</h2>
 <img src=/images/reactivemicroliths.jpg width=700>
+<h5 id=wait-still-microliths>wait still microliths?!</h5>
 <aside class=notes><ul>
-<li></li>
+<li>Decouple using Pub/Sub (ex. kafka, kinesis)</li>
+<li>Consume the models from other services you need</li>
+<li>Broadcast your models to others</li>
+<li>Strong consistency on the outbox, eventual consistency in the service DB (if you have one)</li>
 </ul>
 </aside>
+</section><section>
+<p>✔️ We dont fail continuesly if some other service fails</p>
+<p>✔️ There is no data loss and the process will finish</p>
+<p>✔️ We just need ourselves to do what we promise</p>
+<p>✔️ Fast services will be fast, and slow services can go slow</p>
+<p>❌ Data is mutable so errors will be propagated and not solvable</p>
 </section>
 </section><section>
 <section data-shortcode-section>
-<h1 id=the-best-solution-reactive-microsystems>The Best Solution: Reactive Microsystems</h1>
+<h1 id=an-even-better-solution>An Even Better Solution</h1>
+<h3 id=event-sourcing-journal>Event Sourcing Journal</h3>
+<img src=/images/ironman.png width=700>
+</section><section>
+<h2 id=microsystem-almost>Microsystem (almost)</h2>
+<img src=/images/microsystemsalmost.jpg width=700>
+<h5 id=wait-almost>wait almost?!</h5>
+<aside class=notes><ul>
+<li>based on event sourcing the true is the event and not the result</li>
+</ul>
+</aside>
+</section><section>
+<h2 id=microsystem>Microsystem</h2>
+<img src=/images/microsystems.jpg width=700>
+<aside class=notes></aside>
+</section><section>
+<p>✔️ We dont fail continuesly if some other service fails</p>
+<p>✔️ There is no data loss and the process will finish</p>
+<p>✔️ We just need ourselves to do what we promise</p>
+<p>✔️ Fast services will be fast, and slow services can go slow</p>
+<p>✔️ Data is inmutable so a change in our code can solve historical errors</p>
 </section>
 </section><section>
 <h1 id=questions>Questions?</h1>
