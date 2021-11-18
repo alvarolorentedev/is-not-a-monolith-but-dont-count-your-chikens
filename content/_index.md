@@ -9,8 +9,8 @@ reveal_hugo:
     transition: "slide"
 ---
 
-# Is not a Monolith Anymore!
-## #IsNotEnought
+## 🥂 You don't have a Monolith Anymore 🥂
+##### 😱 But it behaves like one 😱
 
 <small>Created by [Alvaro](https://kanekotic.xom) ([@kanekotic](https://twitter.com/kanekotic)) @[ClimatePartner](https://www.climatepartner.com).
 </small>
@@ -19,33 +19,27 @@ reveal_hugo:
 
 {{% section %}}
 
-# The history
-
----
-
-# The monolith
-### Why we hate it?
+# The monolith 🤒
 
 <img src="/images/monolith.png" width="500"/>
 
 {{% note %}}
 - There was a time we all have to work on the same code base
-- You release a big thing and pray it works
-- You go through big cycles of validating the entire thing
+- You release a big thing and pray it works 
+- You go through big cycles of validating the entire thing to reduce Failure rate
 - You need big teams only to validate, it makes the release cycle bigger
 {{% /note %}}
 
 ---
 
-# The microservice
-### Why we love it?
+# The microservice 🥳
 
 <img src="/images/microservice.png" width="500"/>
 
 
 {{% note %}}
 - we love the concept because it means work in smaller things
-- we can break less stuff so it gives us more confidence
+- we can break less stuff so it gives us more confidences
 - we depend on less people to achieve what we want
 {{% /note %}}
 
@@ -53,18 +47,22 @@ reveal_hugo:
 
 ---
 
-# Awesome!
-### Presentation finish!!!
+
+<img src="/images/bye.jpeg" width="700"/>
+
+###### Awesome! questions?!
 
 ---
 
-# or is it not finish...
+<img src="/images/waitasec.jpg" width="700"/>
+
+###### or is it not finish...
 
 ---
 
 {{% section %}}
 
-### Can there be problems with microservice architecture?
+### Can there be problems with microservice?
 
 ---
 
@@ -90,18 +88,11 @@ reveal_hugo:
 
 ---
 
-# effectively you have a monolith broken into pieces
+# effectively is a broken down monolith
 
 {{% /section %}}
 
 ---
-
-# We are doomed!!!
-
-<img src="/images/timetopanic.jpg" width="700"/>
-
----
-
 
 {{% section %}}
 
@@ -138,7 +129,26 @@ reveal_hugo:
 
 ---
 
-# Any Alternative?!
+# We are doomed!!!
+
+<img src="/images/timetopanic.jpg" width="700"/>
+
+---
+
+<img src="/images/outofhere.jpg" width="700"/>
+
+###### questions???...
+
+---
+
+
+<img src="/images/notyet.gif" width="700"/>
+
+###### ok!
+
+---
+
+# So what do we do?!
 
 ---
 
@@ -251,4 +261,16 @@ reveal_hugo:
 
 ---
 
-# Questions?
+{{% section %}}
+
+<img src="/images/end1.png" />
+
+---
+
+<img src="/images/end2.jpg"/>
+
+---
+
+<img src="/images/end3.jpg" />
+
+{{% /section %}}
