@@ -28,6 +28,7 @@ reveal_hugo:
 - You release a big thing and pray it works 
 - You go through big cycles of validating the entire thing to reduce Failure rate
 - You need big teams only to validate, it makes the release cycle bigger
+- only one scale
 {{% /note %}}
 
 ---
@@ -41,6 +42,7 @@ reveal_hugo:
 - we love the concept because it means work in smaller things
 - we can break less stuff so it gives us more confidences
 - we depend on less people to achieve what we want
+- and we expect to scale only based on our use case
 {{% /note %}}
 
 {{% /section %}}
@@ -85,7 +87,7 @@ reveal_hugo:
 {{% note %}}
 - when you have synchronous calls to other service you are not decoupled from them
 - There is even cascading possible without your knowledge
-- your boundaries are not defined
+- your domain boundaries are not clear because you don't own it
 - slow services are forced to scale by faster services
 - additional latency
 {{% /note %}}
@@ -109,27 +111,40 @@ reveal_hugo:
 # Domains != Resources
 
 {{% note %}}
-- You are thinking in Domains being resources, this comes from the CRUD mentality
-- domain driven design is about thinking on a process as a bounded context
+- You are thinking in Domains as a synonym resources, this comes from the CRUD and object oriented mentality
+- In reality what we want is to achieve something for our users, meaning a process and not an object
+- The boundaries or what is called in domain driven design bounded context is the process not the object
+- A process requires a multitude of information not only a specific piece
 {{% /note %}}
 
 ---
  
-# Independency Data != Only my data
+# Independence != Single Source
 
 {{% note %}}
-- A single source of data means that whenever you need that data you have a direct dependency
+- A single source of data for a resource means that whenever you need that data you have a direct dependency
+- A dependency to a resource means you enter another persons domain
+- This means you are not independent from that domain
+- Keep your dependencies inside if you want to be independent
 {{% /note %}}
 
 ---
  
-# synchronous != Faster
+# Faster != Synchronous
 
 {{% note %}}
-- A single source of data means that whenever you need that data you have a direct dependency
+- If you need to call a service you will need to wait for their answer
+- This could be chain
+- Think if you really need to wait before waiting
 {{% /note %}}
 
+---
 
+# Resilience != Complete
+
+{{% note %}}
+- You dont need to finish all side effects to answer your part
+{{% /note %}}
 
 {{% /section %}}
 
